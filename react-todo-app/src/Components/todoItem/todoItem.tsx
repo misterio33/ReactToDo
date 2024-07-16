@@ -1,14 +1,13 @@
-const TodoItem: React.FC<{
-  title: string;
-  description: string;
-  level: string;
-}> = ({ title, description, level }) => {
+import { TodoItemModel } from "../../models/todoItemModel";
+import "./todoItem.css";
+
+const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
   return (
-    <>
-      <p>{title}</p>
-      <p>{description}</p>
-      <p>{level}</p>
-    </>
+    <div className="todoItem">
+      <p className="title">{todoItem.title}</p>
+      <p className="description">{todoItem.description}</p>
+      <p>{todoItem.level}</p>
+    </div>
   );
 };
 
