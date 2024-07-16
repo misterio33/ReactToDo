@@ -13,6 +13,10 @@
   color: white;
 }
 
+.todoItem.done {
+  background-color: rgb(110, 126, 132);
+}
+
 .todoItem .content {
   flex: 1; /* Take up remaining space */
   display: flex;

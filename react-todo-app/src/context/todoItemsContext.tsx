@@ -22,10 +22,12 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   ]);
 
   function handleAddTodo(title: string, description: string) {
-    setTodoItems([
-      ...todoItems,
-      { title: title, description: description, level: "level" },
-    ]);
+    setTodoItems((prevState) => {
+      return [
+        ...prevState,
+        { title: title, description: description, level: "level" },
+      ];
+    });
   }
 
   function handleDeleteTodo(itemToDelete: TodoItemModel) {
