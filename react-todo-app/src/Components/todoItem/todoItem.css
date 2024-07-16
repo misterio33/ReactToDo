@@ -1,24 +1,53 @@
 .todoItem {
-    border-radius: 5px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: flex-start; /* Align items to the start (left) */
-    padding: 20px;
-    background-color: #333;
-    color: white;
-  }
-  
-  .todoItem p {
-    margin: 5px 0; /* Add some margin between paragraphs */
-  }
-  
-  .todoItem .title {
-    align-self: flex-start; /* Ensure title is at the top left */
-    font-weight: bold; /* Make the title bold */
-  }
-  
-  .todoItem .description {
-    width: 100%; /* Make description span the full width */
-  }
-  
+  width: 66.67%; /* 2/3 of the screen width */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px; /* Optional: max width to prevent it from being too large */
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between; /* Space between content and buttons */
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.todoItem .content {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
+.todoItem .content p {
+  margin: 5px 0; /* Add some margin between paragraphs */
+}
+
+.todoItem .content .title {
+  align-self: flex-start; /* Ensure title is at the top left */
+  font-weight: bold; /* Make the title bold */
+}
+
+.todoItem .content .description {
+  width: 100%; /* Make description span the full width */
+}
+
+.todoItem .buttons {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  justify-content: flex-start; /* Align buttons to the top */
+}
+
+.todoItem .buttons button {
+  margin-bottom: 10px; /* Space between buttons */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+
+.todoItem .buttons button:hover {
+  background-color: #777; /* Slightly lighter background on hover */
+}

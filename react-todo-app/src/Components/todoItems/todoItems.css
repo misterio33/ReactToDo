@@ -1,0 +1,6 @@
+.todoItems {
+  display: flex;
+  justify-content: center; /* Center the .todoItem horizontally */
+  align-items: center; /* Center the .todoItem vertically (if needed) */
+  background-color: #222; /* Optional: background color for the entire container */
+}

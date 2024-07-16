@@ -1,16 +1,14 @@
-import { useState } from "react";
-import './createTodo.css'
+import { useContext, useState } from "react";
+import "./createTodo.css";
+import { TodoItemContext } from "../../context/todoItemsContext";
 
-interface CreateTodoProps {
-  handleAddTodo: (title: string, description: string) => void;
-}
-
-const CreateTodo: React.FC<CreateTodoProps> = ({ handleAddTodo }) => {
+const CreateTodo: React.FC = () => {
+  const { onAddHandler } = useContext(TodoItemContext);
   const [newTodoTitle, setNewTodoTitle] = useState<string>();
   const [newTodoDescription, setNewTodoDescription] = useState<string>();
 
   const onAddTodo = () => {
-    handleAddTodo(newTodoTitle!, newTodoDescription!);
+    onAddHandler(newTodoTitle!, newTodoDescription!);
     setNewTodoTitle("");
     setNewTodoDescription("");
   };

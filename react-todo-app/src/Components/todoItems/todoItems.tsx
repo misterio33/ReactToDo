@@ -1,10 +1,12 @@
-import { TodoItemModel } from "../../models/todoItemModel";
+import { useContext } from "react";
 import TodoItem from "../todoItem/todoItem";
+import { TodoItemContext } from "../../context/todoItemsContext";
 
-const TodoItems: React.FC<{ items: TodoItemModel[] }> = ({ items }) => {
+const TodoItems: React.FC = () => {
+  const { todoItems } = useContext(TodoItemContext);
   return (
-    <section>
-      {items.map((item) => {
+    <section className="todoItems">
+      {todoItems.map((item) => {
         return <TodoItem todoItem={item} />;
       })}
     </section>
