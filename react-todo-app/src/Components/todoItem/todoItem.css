@@ -29,11 +29,13 @@
 
 .todoItem .content .title {
   align-self: flex-start; /* Ensure title is at the top left */
+  text-shadow:#777;
   font-weight: bold; /* Make the title bold */
 }
 
 .todoItem .content .description {
   width: 100%; /* Make description span the full width */
+  font-size: large;
 }
 
 .todoItem .buttons {

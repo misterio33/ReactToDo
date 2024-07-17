@@ -1,6 +1,15 @@
-.todoItems {
-  display: flex;
-  justify-content: center; /* Center the .todoItem horizontally */
-  align-items: center; /* Center the .todoItem vertically (if needed) */
-  background-color: #222; /* Optional: background color for the entire container */
+.message {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 24px;
+  color: white;
+  background-color: #333;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 600px;
 }

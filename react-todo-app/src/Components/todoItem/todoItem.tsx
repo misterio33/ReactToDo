@@ -1,17 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoItemModel } from "../../models/todoItemModel";
 import "./todoItem.css";
 import { TodoItemContext } from "../../context/todoItemsContext";
 
 const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
-  const { deleteHandler: onDeleteHandler, doneHandler: addToDoneHandler, unDoneHandler } =
-    useContext(TodoItemContext);
+  const {
+    deleteHandler: onDeleteHandler,
+    doneHandler: addToDoneHandler,
+    unDoneHandler,
+  } = useContext(TodoItemContext);
   const className = todoItem.isDone ? "todoItem done" : "todoItem";
 
   return (
     <div className={className}>
       <div className="content">
-        <p className="title">{todoItem.title}</p>
+        <h1 className="title">{todoItem.title.toUpperCase()}</h1>
         <p className="description">{todoItem.description}</p>
       </div>
       <div className="buttons">
