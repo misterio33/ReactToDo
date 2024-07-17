@@ -2,7 +2,6 @@ import { useContext } from "react";
 import TodoItem from "../todoItem/todoItem";
 import { TodoItemContext } from "../../context/todoItemsContext";
 import "./todoItems.css";
-import SortButtons from "../sortButtons/sortButtons";
 
 const TodoItems: React.FC = () => {
   const { todoItems } = useContext(TodoItemContext);
@@ -11,7 +10,6 @@ const TodoItems: React.FC = () => {
       {todoItems.length > 0 ? (
         <div>
           <div className="message">You have {todoItems.length} items to do</div>
-          <SortButtons />
         </div>
       ) : (
         <div className="message">No items to do, create a new one</div>

@@ -36,13 +36,13 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   function handleAdd(title: string, description: string) {
     setTodoItems((prevState) => {
       return [
-        ...prevState,
         {
           title: title,
           description: description,
           isDone: false,
           createdAt: new Date(),
         },
+        ...prevState,
       ];
     });
   }
@@ -60,7 +60,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   function handleDone(doneItem: TodoItemModel) {
     setDoneTodoItems((prevState) => {
       doneItem.isDone = true;
-      return [...prevState, doneItem];
+      return [doneItem, ...prevState];
     });
 
     setTodoItems((prevState) => {
@@ -71,7 +71,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   function handleUnDone(doneItem: TodoItemModel) {
     setTodoItems((prevState) => {
       doneItem.isDone = false;
-      return [...prevState, doneItem];
+      return [doneItem, ...prevState];
     });
 
     setDoneTodoItems((prevState) => {
