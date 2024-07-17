@@ -13,7 +13,6 @@ const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
       <div className="content">
         <p className="title">{todoItem.title}</p>
         <p className="description">{todoItem.description}</p>
-        <p>{todoItem.level}</p>
       </div>
       <div className="buttons">
         <button
