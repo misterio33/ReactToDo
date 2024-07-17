@@ -3,7 +3,7 @@ import "./createTodo.css";
 import { TodoItemContext } from "../../context/todoItemsContext";
 
 const CreateTodo: React.FC = () => {
-  const { onAddHandler } = useContext(TodoItemContext);
+  const { addHandler: onAddHandler } = useContext(TodoItemContext);
   const [newTodoTitle, setNewTodoTitle] = useState<string>();
   const [newTodoDescription, setNewTodoDescription] = useState<string>();
 

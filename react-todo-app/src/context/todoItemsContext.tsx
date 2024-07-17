@@ -8,10 +8,10 @@ interface TodoItemsProps {
 interface TodoItemProps {
   todoItems: TodoItemModel[];
   doneTodoItems: TodoItemModel[];
-  addToDoneHandler: (itemToUndone: TodoItemModel) => void;
+  doneHandler: (itemToUndone: TodoItemModel) => void;
   unDoneHandler: (itemToUndone: TodoItemModel) => void;
-  onAddHandler: (title: string, description: string) => void;
-  onDeleteHandler: (itemToDelete: TodoItemModel) => void;
+  addHandler: (title: string, description: string) => void;
+  deleteHandler: (itemToDelete: TodoItemModel) => void;
 }
 
 const TodoItemContext = createContext({} as TodoItemProps);
@@ -23,7 +23,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
     { title: "title2", description: "descs2", level: "level2", isDone: false },
   ]);
 
-  function handleAddTodo(title: string, description: string) {
+  function handleAdd(title: string, description: string) {
     setTodoItems((prevState) => {
       return [
         ...prevState,
@@ -37,13 +37,13 @@ const TodoItemProvider = (props: TodoItemsProps) => {
     });
   }
 
-  function handleDeleteTodo(itemToDelete: TodoItemModel) {
+  function handleDelete(itemToDelete: TodoItemModel) {
     setTodoItems((prevState) => {
       return prevState.filter((item) => item !== itemToDelete);
     });
   }
 
-  function handleAddToDone(doneItem: TodoItemModel) {
+  function handleDone(doneItem: TodoItemModel) {
     setDoneTodoItems((prevState) => {
       doneItem.isDone = true;
       return [...prevState, doneItem];
@@ -71,10 +71,10 @@ const TodoItemProvider = (props: TodoItemsProps) => {
         value={{
           todoItems: todoItems,
           doneTodoItems: doneTodoItems,
-          addToDoneHandler: handleAddToDone,
+          doneHandler: handleDone,
           unDoneHandler: handleUnDone,
-          onAddHandler: handleAddTodo,
-          onDeleteHandler: handleDeleteTodo,
+          addHandler: handleAdd,
+          deleteHandler: handleDelete,
         }}
       >
         {props.children}

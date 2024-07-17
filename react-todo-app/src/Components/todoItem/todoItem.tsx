@@ -4,7 +4,7 @@ import "./todoItem.css";
 import { TodoItemContext } from "../../context/todoItemsContext";
 
 const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
-  const { onDeleteHandler, addToDoneHandler, unDoneHandler } =
+  const { deleteHandler: onDeleteHandler, doneHandler: addToDoneHandler, unDoneHandler } =
     useContext(TodoItemContext);
   const className = todoItem.isDone ? "todoItem done" : "todoItem";
 
