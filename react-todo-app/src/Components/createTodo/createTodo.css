@@ -1,33 +1,41 @@
 .createTodo {
-    border-radius: 5px;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-    align-items: flex-start; /* Align items to the start (left) */
-    padding: 20px;
-    background-color: #333;
-    color: white;
+  width: 66.67%; /* 2/3 of the screen width */
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  align-items: flex-start; /* Align items to the start (left) */
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+.createTodo input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px; /* Space between input fields */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: lightslategray;
+}
+
+.createTodo input::placeholder {
+    color: black;
+    opacity: 1; 
   }
-  
-  .createTodo input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px; /* Space between input fields */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .createTodo button {
-    align-self: flex-start; /* Align button to the start (left) */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #555;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .createTodo button:hover {
-    background-color: #777; /* Slightly lighter background on hover */
-  }
-  
+
+.createTodo button {
+  align-self: flex-start; /* Align button to the start (left) */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+
+.createTodo button:hover {
+  background-color: #777; /* Slightly lighter background on hover */
+}

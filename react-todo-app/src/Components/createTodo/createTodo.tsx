@@ -18,11 +18,13 @@ const CreateTodo: React.FC = () => {
       <input
         type="text"
         value={newTodoTitle}
+        placeholder="Enter Tittle"
         onChange={(e) => setNewTodoTitle(e.target.value)}
       />
       <input
         type="text"
         value={newTodoDescription}
+        placeholder="Enter Description"
         onChange={(e) => setNewTodoDescription(e.target.value)}
       />
       <button onClick={onAddTodo}>Add Todo</button>
