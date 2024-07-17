@@ -6,8 +6,8 @@ import { TodoItemContext } from "../../context/todoItemsContext";
 const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
   const {
     deleteHandler: onDeleteHandler,
-    doneHandler: addToDoneHandler,
-    unDoneHandler,
+    markAsDoneHandler: addToDoneHandler,
+    markAsUnDoneHandler: unDoneHandler,
   } = useContext(TodoItemContext);
 
   const [isEditing, setIsEditing] = useState(false);
@@ -64,9 +64,7 @@ const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
               {todoItem.isDone ? "Undone" : "Done"}
             </button>
             {todoItem.isDone ? null : (
-              <button onClick={() => handleEdit(todoItem)}>
-                {isEditing ? "Save" : "Edit"}
-              </button>
+              <button onClick={() => handleEdit(todoItem)}>Edit</button>
             )}
             <button onClick={() => onDeleteHandler(todoItem)}>Delete</button>
           </>

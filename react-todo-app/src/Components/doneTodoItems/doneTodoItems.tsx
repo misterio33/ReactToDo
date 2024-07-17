@@ -10,10 +10,12 @@ const DoneTodoItems: React.FC = () => {
       <br />
       <section className="todoItems">
         {doneTodoItems.length > 0 ? (
-          <div className="message">You have done {doneTodoItems.length} items!</div>
+          <div className="message">
+            You have done {doneTodoItems.length} items!
+          </div>
         ) : null}
         {doneTodoItems.map((item) => {
-          return <TodoItem todoItem={item} />;
+          return <TodoItem key={item.title} todoItem={item} />;
         })}
       </section>
     </>

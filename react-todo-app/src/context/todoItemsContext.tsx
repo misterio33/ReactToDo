@@ -8,15 +8,15 @@ interface TodoItemsProps {
 interface TodoItemProps {
   todoItems: TodoItemModel[];
   doneTodoItems: TodoItemModel[];
-  doneHandler: (itemToUndone: TodoItemModel) => void;
-  unDoneHandler: (itemToUndone: TodoItemModel) => void;
+  markAsDoneHandler: (itemToUndone: TodoItemModel) => void;
+  markAsUnDoneHandler: (itemToUndone: TodoItemModel) => void;
   addHandler: (title: string, description: string) => void;
   deleteHandler: (itemToDelete: TodoItemModel) => void;
 }
 
 const TodoItemContext = createContext({} as TodoItemProps);
 
-const TodoItemProvider = (props: TodoItemsProps) => {
+const TodoItemProvider = ({ children }: TodoItemsProps) => {
   const [doneTodoItems, setDoneTodoItems] = useState<TodoItemModel[]>([]);
   const [todoItems, setTodoItems] = useState<TodoItemModel[]>([
     {
@@ -59,8 +59,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
 
   function handleDone(doneItem: TodoItemModel) {
     setDoneTodoItems((prevState) => {
-      doneItem.isDone = true;
-      return [doneItem, ...prevState];
+      return [{ ...doneItem, isDone: true }, ...prevState];
     });
 
     setTodoItems((prevState) => {
@@ -70,8 +69,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
 
   function handleUnDone(doneItem: TodoItemModel) {
     setTodoItems((prevState) => {
-      doneItem.isDone = false;
-      return [doneItem, ...prevState];
+      return [{ ...doneItem, isDone: false }, ...prevState];
     });
 
     setDoneTodoItems((prevState) => {
@@ -79,19 +77,19 @@ const TodoItemProvider = (props: TodoItemsProps) => {
     });
   }
 
+  const contextValue: TodoItemProps = {
+    todoItems: todoItems,
+    doneTodoItems: doneTodoItems,
+    markAsDoneHandler: handleDone,
+    markAsUnDoneHandler: handleUnDone,
+    addHandler: handleAdd,
+    deleteHandler: handleDelete,
+  };
+
   return (
     <>
-      <TodoItemContext.Provider
-        value={{
-          todoItems: todoItems,
-          doneTodoItems: doneTodoItems,
-          doneHandler: handleDone,
-          unDoneHandler: handleUnDone,
-          addHandler: handleAdd,
-          deleteHandler: handleDelete,
-        }}
-      >
-        {props.children}
+      <TodoItemContext.Provider value={contextValue}>
+        {children}
       </TodoItemContext.Provider>
     </>
   );
