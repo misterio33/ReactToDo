@@ -2,6 +2,7 @@ import Footer from "./footer/footer";
 import Header from "./header/header";
 import CreateTodo from "./createTodo/createTodo";
 import TodoItems from "./todoItems/todoItems";
+import DoneTodoItems from "./doneTodoItems/doneTodoItems";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <CreateTodo />
       <TodoItems />
+      <DoneTodoItems/>
       <Footer />
     </>
   );

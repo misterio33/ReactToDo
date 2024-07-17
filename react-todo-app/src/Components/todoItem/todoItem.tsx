@@ -4,15 +4,10 @@ import "./todoItem.css";
 import { TodoItemContext } from "../../context/todoItemsContext";
 
 const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
-  const { onDeleteHandler } = useContext(TodoItemContext);
-  const [isDone, setIsDone] = useState(false);
-  const className = isDone ? "todoItem done" : "todoItem";
+  const { onDeleteHandler, addToDoneHandler, unDoneHandler } =
+    useContext(TodoItemContext);
+  const className = todoItem.isDone ? "todoItem done" : "todoItem";
 
-  function handleDone() {
-    setIsDone((prevState) => {
-      return !prevState;
-    });
-  }
   return (
     <div className={className}>
       <div className="content">
@@ -21,8 +16,16 @@ const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
         <p>{todoItem.level}</p>
       </div>
       <div className="buttons">
-        <button onClick={handleDone}>{isDone ? "Undone" : "Done"}</button>
-        {isDone ? null : <button>Update</button>}
+        <button
+          onClick={
+            todoItem.isDone
+              ? () => unDoneHandler(todoItem)
+              : () => addToDoneHandler(todoItem)
+          }
+        >
+          {todoItem.isDone ? "Undone" : "Done"}
+        </button>
+        {todoItem.isDone ? null : <button>Update</button>}
         <button onClick={() => onDeleteHandler(todoItem)}>Delete</button>
       </div>
     </div>
