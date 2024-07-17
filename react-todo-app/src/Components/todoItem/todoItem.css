@@ -29,7 +29,7 @@
 
 .todoItem .content .title {
   align-self: flex-start; /* Ensure title is at the top left */
-  text-shadow:#777;
+  text-shadow: #777;
   font-weight: bold; /* Make the title bold */
 }
 
@@ -56,4 +56,30 @@
 
 .todoItem .buttons button:hover {
   background-color: #777; /* Slightly lighter background on hover */
+}
+
+.title-input,
+.description-input {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px; /* Space between input fields */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: lightslategray;
+}
+
+.flicker {
+  animation: flicker-animation 1s infinite;
+}
+
+@keyframes flicker-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }

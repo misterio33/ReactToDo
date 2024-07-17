@@ -21,13 +21,13 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   const [todoItems, setTodoItems] = useState<TodoItemModel[]>([
     {
       title: "title1",
-      description: "descs1",
+      description: "Description for the first task",
       isDone: false,
       createdAt: new Date(),
     },
     {
       title: "title2",
-      description: "descs2",
+      description: "Description for the second task",
       isDone: false,
       createdAt: new Date(),
     },

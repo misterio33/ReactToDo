@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TodoItemModel } from "../../models/todoItemModel";
 import "./todoItem.css";
 import { TodoItemContext } from "../../context/todoItemsContext";
@@ -9,27 +9,68 @@ const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
     doneHandler: addToDoneHandler,
     unDoneHandler,
   } = useContext(TodoItemContext);
-  const className = todoItem.isDone ? "todoItem done" : "todoItem";
 
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(todoItem.title);
+  const [editedDescription, setEditedDescription] = useState(
+    todoItem.description
+  );
+
+  function handleEdit(item: TodoItemModel) {
+    setIsEditing((prevState) => !prevState);
+    if (isEditing) {
+      item.title = editedTitle;
+      item.description = editedDescription;
+    }
+  }
   return (
-    <div className={className}>
+    <div className={todoItem.isDone ? "todoItem done" : "todoItem"}>
       <div className="content">
-        <h1 className="title">{todoItem.title.toUpperCase()}</h1>
-        <p className="description">{todoItem.description}</p>
+        {isEditing ? (
+          <>
+            <input
+              className="title-input flicker"
+              type="text"
+              value={editedTitle}
+              onChange={(e) => setEditedTitle(e.target.value)}
+            />
+            <textarea
+              className="description-input flicker"
+              value={editedDescription}
+              onChange={(e) => setEditedDescription(e.target.value)}
+            />
+          </>
+        ) : (
+          <>
+            <h1 className="title">{todoItem.title.toUpperCase()}</h1>
+            <p className="description">{todoItem.description}</p>
+          </>
+        )}
         <p>Created at: {todoItem.createdAt.toDateString()}</p>
       </div>
+
       <div className="buttons">
-        <button
-          onClick={
-            todoItem.isDone
-              ? () => unDoneHandler(todoItem)
-              : () => addToDoneHandler(todoItem)
-          }
-        >
-          {todoItem.isDone ? "Undone" : "Done"}
-        </button>
-        {todoItem.isDone ? null : <button>Update</button>}
-        <button onClick={() => onDeleteHandler(todoItem)}>Delete</button>
+        {isEditing ? (
+          <button onClick={() => handleEdit(todoItem)}>Save</button>
+        ) : (
+          <>
+            <button
+              onClick={
+                todoItem.isDone
+                  ? () => unDoneHandler(todoItem)
+                  : () => addToDoneHandler(todoItem)
+              }
+            >
+              {todoItem.isDone ? "Undone" : "Done"}
+            </button>
+            {todoItem.isDone ? null : (
+              <button onClick={() => handleEdit(todoItem)}>
+                {isEditing ? "Save" : "Edit"}
+              </button>
+            )}
+            <button onClick={() => onDeleteHandler(todoItem)}>Delete</button>
+          </>
+        )}
       </div>
     </div>
   );
