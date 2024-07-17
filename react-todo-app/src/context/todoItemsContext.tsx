@@ -37,9 +37,13 @@ const TodoItemProvider = (props: TodoItemsProps) => {
   }
 
   function handleDelete(itemToDelete: TodoItemModel) {
-    setTodoItems((prevState) => {
-      return prevState.filter((item) => item !== itemToDelete);
-    });
+    itemToDelete.isDone
+      ? setDoneTodoItems((prevState) => {
+          return prevState.filter((item) => item !== itemToDelete);
+        })
+      : setTodoItems((prevState) => {
+          return prevState.filter((item) => item !== itemToDelete);
+        });
   }
 
   function handleDone(doneItem: TodoItemModel) {
