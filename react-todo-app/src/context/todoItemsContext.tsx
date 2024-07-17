@@ -19,8 +19,18 @@ const TodoItemContext = createContext({} as TodoItemProps);
 const TodoItemProvider = (props: TodoItemsProps) => {
   const [doneTodoItems, setDoneTodoItems] = useState<TodoItemModel[]>([]);
   const [todoItems, setTodoItems] = useState<TodoItemModel[]>([
-    { title: "title1", description: "descs1", isDone: false },
-    { title: "title2", description: "descs2", isDone: false },
+    {
+      title: "title1",
+      description: "descs1",
+      isDone: false,
+      createdAt: new Date(),
+    },
+    {
+      title: "title2",
+      description: "descs2",
+      isDone: false,
+      createdAt: new Date(),
+    },
   ]);
 
   function handleAdd(title: string, description: string) {
@@ -31,6 +41,7 @@ const TodoItemProvider = (props: TodoItemsProps) => {
           title: title,
           description: description,
           isDone: false,
+          createdAt: new Date(),
         },
       ];
     });

@@ -16,6 +16,7 @@ const TodoItem: React.FC<{ todoItem: TodoItemModel }> = ({ todoItem }) => {
       <div className="content">
         <h1 className="title">{todoItem.title.toUpperCase()}</h1>
         <p className="description">{todoItem.description}</p>
+        <p>Created at: {todoItem.createdAt.toDateString()}</p>
       </div>
       <div className="buttons">
         <button
